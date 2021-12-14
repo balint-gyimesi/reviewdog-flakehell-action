@@ -7,11 +7,16 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
-echo vars: INPUT_FAIL_ON_ERROR = ${INPUT_FAIL_ON_ERROR}
-echo env:
-echo "*************************"
-env
-echo "*************************"
+echo "Running: "
+echo  "flakehell lint \
+  | reviewdog -efm="%f:%l:%c: %m" \
+      -name="flakehell" \
+      -reporter="${INPUT_REPORTER:-github-pr-check}" \
+      -filter-mode="${INPUT_FILTER_MODE}" \
+      -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
+      -level="${INPUT_LEVEL}" \
+      ${INPUT_REVIEWDOG_FLAGS}
+"
 
 flakehell lint \
   | reviewdog -efm="%f:%l:%c: %m" \
