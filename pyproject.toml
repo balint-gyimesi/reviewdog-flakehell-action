@@ -1,5 +1,5 @@
 [tool.flakehell]
 # Needed due to https://github.com/flakehell/flakehell/issues/10
-extended_default_ignore=[]
+extended_default_ignore = []
 # show line of source code in output
 show_source = true
