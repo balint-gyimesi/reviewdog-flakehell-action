@@ -46,6 +46,7 @@ inputs:
 
   ### Flags for flakehell
   # None currently, flakehell is configured through pyproject.toml
+
 runs:
   using: 'docker'
   image: 'Dockerfile'

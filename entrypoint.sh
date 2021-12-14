@@ -7,6 +7,12 @@ fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
+echo vars: INPUT_FAIL_ON_ERROR = ${INPUT_FAIL_ON_ERROR}
+echo env:
+echo "*************************"
+env
+echo "*************************"
+
 flakehell lint . \
   | reviewdog -efm="%f:%l:%c: %m" \
       -name="flakehell" \
