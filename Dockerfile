@@ -9,7 +9,7 @@ RUN apk --no-cache add git
 
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 
-RUN python3 -m pip install flake8 flakehell
+RUN python3 -m pip install flake8=4.0.1 flakehell=0.3.3
 
 COPY entrypoint.sh /entrypoint.sh
 
