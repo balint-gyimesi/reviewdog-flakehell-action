@@ -5,17 +5,19 @@ on:
       - master
   pull_request:
 jobs:
-  test-check:
-    name: runner / <linter-name> (github-check)
+  test-PythonFlakehell:
+    name: runner / flakehell
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ./
         with:
           github_token: ${{ secrets.github_token }}
-          reporter: github-check
-          level: info
-          locale: "US"
+          # Change reviewdog reporter if you need [github-pr-check,github-check,github-pr-review].
+          reporter: github-pr-review
+          # Change reporter level if you need.
+          # GitHub Status Check won't become failure with warning.
+          level: warning
 
   test-pr-check:
     if: github.event_name == 'pull_request'
