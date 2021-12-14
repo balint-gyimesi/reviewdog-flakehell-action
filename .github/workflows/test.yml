@@ -9,7 +9,6 @@ jobs:
     name: runner / flakehell
     runs-on: ubuntu-latest
     steps:
-      - name: flakehell
       - uses: actions/checkout@v2
       - uses: ./
         with:
