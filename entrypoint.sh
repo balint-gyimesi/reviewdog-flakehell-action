@@ -18,8 +18,14 @@ echo  "flakehell lint \
       ${INPUT_REVIEWDOG_FLAGS}
 "
 
-flakehell lint \
-  | reviewdog -efm="%f:%l:%c: %m" \
+flakehell lint > flakehell.out
+
+echo "Contents of flakehell.out:"
+echo "**********************"
+cat flakehell.out
+echo "**********************"
+
+cat flakehell.out | reviewdog -efm="%f:%l:%c: %m" \
       -name="flakehell" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
       -filter-mode="${INPUT_FILTER_MODE}" \
