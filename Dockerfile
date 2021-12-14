@@ -12,7 +12,8 @@ RUN apt install python3-pip -y
 RUN python3 -m pip install --upgrade pip
 
 # Install reviewdog, flake8 and flakehell
-RUN python3 -m pip install --no-cache-dir flake8==3.9.2 flakehell==0.8.0
+# flake8 has a bug in versions>3.9.0 https://github.com/flakehell/flakehell/issues/10
+RUN python3 -m pip install --no-cache-dir flake8==3.9.0 flakehell==0.8.0
 
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh \
     | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
