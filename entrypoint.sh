@@ -13,7 +13,7 @@ echo "*************************"
 env
 echo "*************************"
 
-flakehell lint . \
+flakehell lint \
   | reviewdog -efm="%f:%l:%c: %m" \
       -name="flakehell" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
