@@ -8,6 +8,11 @@ fi
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 export TMPFILE="flakehell.out"
+
+echo "Running flakehell with:"
+echo "**********************"
+echo "flakehell lint > ${TMPFILE}"
+echo "**********************"
 flakehell lint > ${TMPFILE}
 
 echo "Contents of flakehell.out:"
