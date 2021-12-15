@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-export DEFAULT_WORKSPACE=/tmp/flakehell
-
 if [ -n "${GITHUB_WORKSPACE}" ]
 then
   mkdir "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || true
@@ -12,24 +10,12 @@ fi
 echo "Running in: ${PWD}"
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
-
 export TMPFILE="flakehell.out"
 
-echo "Running flakehell with:"
-echo "**********************"
-echo "flakehell lint > ${TMPFILE}"
-echo "**********************"
-flakehell lint
+echo "Running flakehell"
 flakehell lint > ${TMPFILE}
 
-echo "Contents of flakehell.out:"
-echo "**********************"
-cat flakehell.out
-echo "**********************"
-
-
 echo "Running reviewdog with:"
-echo "**********************"
 echo 'reviewdog -efm="%f:%l:%c: %m" \
       -name="flakehell" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
@@ -44,7 +30,7 @@ echo "  INPUT_FILTER_MODE=${INPUT_FILTER_MODE}"
 echo "  INPUT_FAIL_ON_ERROR=${INPUT_FAIL_ON_ERROR}"
 echo "  INPUT_LEVEL=${INPUT_LEVEL}"
 echo "  INPUT_REVIEWDOG_FLAGS=${INPUT_REVIEWDOG_FLAGS}"
-echo "**********************"
+echo
 
 reviewdog -efm="%f:%l:%c: %m" \
       -name="flakehell" \
