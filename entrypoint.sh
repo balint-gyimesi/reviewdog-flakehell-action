@@ -11,8 +11,6 @@ fi
 
 echo "Running in: ${PWD}"
 
-ls -la
-
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 export TMPFILE="flakehell.out"
@@ -21,6 +19,7 @@ echo "Running flakehell with:"
 echo "**********************"
 echo "flakehell lint > ${TMPFILE}"
 echo "**********************"
+flakehell lint
 flakehell lint > ${TMPFILE}
 
 echo "Contents of flakehell.out:"
@@ -29,7 +28,7 @@ cat flakehell.out
 echo "**********************"
 
 
-echo "Running flakehell with:"
+echo "Running reviewdog with:"
 echo "**********************"
 echo 'reviewdog -efm="%f:%l:%c: %m" \
       -name="flakehell" \
