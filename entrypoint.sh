@@ -11,6 +11,8 @@ fi
 
 echo "Running in: ${PWD}"
 
+ls -la
+
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 export TMPFILE="flakehell.out"
