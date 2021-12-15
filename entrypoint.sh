@@ -10,10 +10,10 @@ fi
 echo "Running in: ${PWD}"
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
-export TMPFILE="flakehell.out"
+export TMPFILE=$(mktemp)
 
 echo "Running flakehell"
-flakehell lint > ${TMPFILE}
+flakehell lint > "${TMPFILE}""
 
 echo "Running reviewdog with:"
 echo 'reviewdog -efm="%f:%l:%c: %m" \
@@ -38,4 +38,4 @@ reviewdog -efm="%f:%l:%c: %m" \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
-      ${INPUT_REVIEWDOG_FLAGS} < ${TMPFILE}
+      ${INPUT_REVIEWDOG_FLAGS} < "${TMPFILE}"
