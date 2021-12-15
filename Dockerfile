@@ -32,14 +32,15 @@ RUN python3 -m pip install --no-cache-dir \
     flake8-markdown \
     flake8-docstrings \
     flake8-codes \
-    flake8-import-orderhttps://github.com/berkshiregrey/bg_devinfra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
+    flake8-import-order
 
 
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh \
     | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 
+
 COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
 # For local testing
 # ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT ["/entrypoint.sh"]
