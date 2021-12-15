@@ -5,7 +5,7 @@ ENV REVIEWDOG_VERSION=v0.13.0
 RUN apt-get update -y
 
 # Install wget
-RUN apt-get install --no-install-recommends wget -y
+RUN apt-get install --no-install-recommends wget git -y
 
 # Install and upgrade pip
 RUN apt-get install python3-pip -y
