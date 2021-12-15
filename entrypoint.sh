@@ -7,10 +7,9 @@ if [ -n "${GITHUB_WORKSPACE}" ]
 then
   mkdir "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || true
   cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit
-else
-  mkdir flakehell
-  cd flakehell
 fi
+
+echo "Running in: ${PWD}"
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
