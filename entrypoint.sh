@@ -12,7 +12,7 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 export TMPFILE=$(mktemp)
 
 echo "Running flakehell"
-flakehell lint > "${TMPFILE}""
+flakehell lint > "${TMPFILE}"
 
 echo "Running reviewdog with:"
 echo 'reviewdog -efm="%f:%l:%c: %m" \
