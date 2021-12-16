@@ -16,7 +16,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install reviewdog, flake8, pylint and flakehell
 # flake8 has a bug in versions>3.9.0 https://github.com/flakehell/flakehell/issues/10
-RUN python3 -m pip install --no-cache-dir flake8==3.9.0 flakehell==0.8.0 pylint==2.6.0
+# and another in >4.0.0 https://github.com/flakehell/flakehell/issues/22
+RUN python3 -m pip install --no-cache-dir flake8==3.9.2 flakehell==0.9.0 pylint==2.12.2
 
 # Install plugins for flakehell
 RUN python3 -m pip install --no-cache-dir \
