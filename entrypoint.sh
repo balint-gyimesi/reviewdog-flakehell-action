@@ -22,11 +22,11 @@ cat pyproject.toml || true
 
 echo -e "\n============================="
 echo "Sanity check, running flakehell without saving its ouput:"
-flakehell lint
+flakehell lint || true
 
 echo -e "\n============================="
-echo "Running flakehell, saving output to tmpfile: ${TMPFILE}"
-flakehell lint > "${TMPFILE}"
+echo "Running flakehell, saving output to tmpfile: ${TMPFILE} (ignore non-zero exit)"
+flakehell lint > "${TMPFILE}"  || true
 
 echo -e "\n============================="
 ls -la ${TMPFILE}
@@ -42,7 +42,7 @@ echo 'reviewdog -efm="%f:%l:%c: %m" \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
-      ${INPUT_REVIEWDOG_FLAGS} < ${TMPFILE} || true'
+      ${INPUT_REVIEWDOG_FLAGS} < ${TMPFILE}'
 echo ""
 echo "Where vars are:"
 echo "  INPUT_REPORTER=${INPUT_REPORTER}"
@@ -58,7 +58,7 @@ reviewdog -efm="%f:%l:%c: %m" \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
-      ${INPUT_REVIEWDOG_FLAGS} < "${TMPFILE}" || true
+      ${INPUT_REVIEWDOG_FLAGS} < "${TMPFILE}"
 
 echo -e "\n============================="
 echo "Done running reviewdog, exiting..."
