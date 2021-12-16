@@ -11,8 +11,22 @@ echo "Running in: ${PWD}"
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 export TMPFILE=$(mktemp)
 
+echo "Flakehell installed plugins:"
+flakehell plugins
+
+echo "Flakehell config file:"
+ls -la pyproject.toml
+cat pyproject.toml || true
+
+echo "Sanity check, running flakehell without saving its ouput:"
+flakehell lint
+
 echo "Running flakehell, saving output to tmpfile: ${TMPFILE}"
 flakehell lint > "${TMPFILE}"
+
+ls -la ${TMPFILE}
+echo "Head of ${TMPFILE}:"
+head ${TMPFILE}
 
 echo "Running reviewdog with:"
 echo 'reviewdog -efm="%f:%l:%c: %m" \
