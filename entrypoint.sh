@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 if [ -n "${GITHUB_WORKSPACE}" ]
 then
-  cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit
+  cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit 1
 fi
 
 echo "Running in: ${PWD}"
@@ -18,15 +18,15 @@ flakehell plugins
 echo -e "\n============================="
 echo "Flakehell config file:"
 ls -la pyproject.toml
-cat pyproject.toml || true
+cat pyproject.toml || :
 
 echo -e "\n============================="
 echo "Sanity check, running flakehell without saving its ouput:"
-flakehell lint || true
+flakehell lint || :
 
 echo -e "\n============================="
 echo "Running flakehell, saving output to tmpfile: ${TMPFILE} (ignore non-zero exit)"
-flakehell lint > "${TMPFILE}"  || true
+flakehell lint > "${TMPFILE}" || :
 
 echo -e "\n============================="
 ls -la ${TMPFILE}
