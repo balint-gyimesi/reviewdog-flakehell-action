@@ -11,7 +11,7 @@ echo "Running in: ${PWD}"
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 export TMPFILE=$(mktemp)
 
-echo "Running flakehell"
+echo "Running flakehell, saving output to tmpfile: ${TMPFILE}"
 flakehell lint > "${TMPFILE}"
 
 echo "Running reviewdog with:"
