@@ -25,7 +25,8 @@ RUN python3 -m pip install --no-cache-dir \
     flake8-return \
     flake8-simplify \
     flake8-spellcheck \
-    flake8-functions \
+    # Fails on python3.6.9 with SyntaxError: future feature annotations is not defined
+    # flake8-functions \
     wemake-python-styleguide \
     flake8-markdown \
     flake8-docstrings \
