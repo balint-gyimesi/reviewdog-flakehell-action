@@ -1,23 +1,15 @@
 #!/bin/bash
-set -e
-
-# Don't forget to set the REVIEWDOG_GITHUB_API_TOKEN env in your action!
-# Example:
-# jobs:
-#   PythonFlakehell:
-#     name: runner / flakehell
-#     env:
-#       REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.reviewdog_github_api_token }}
+set -
 
 if [ -n "${GITHUB_WORKSPACE}" ]
 then
   cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit 1
 fi
 
-echo "Running in: ${PWD}"
-
+export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 export TMPFILE=$(mktemp)
 
+echo "Running in: ${PWD}"
 echo -e "\n============================="
 echo "Flakehell installed plugins:"
 flakehell plugins
