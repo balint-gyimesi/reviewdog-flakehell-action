@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3.7 \
     python3-pip
 RUN python3.7 -m pip install --no-cache-dir --upgrade pip
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-distutils \
     python3-setuptools
 
