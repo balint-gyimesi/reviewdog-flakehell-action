@@ -45,7 +45,7 @@ RUN python3.7 -m pip install --no-cache-dir \
     flake8-codes \
     flake8-import-order
 
-set -o pipefail
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh \
     | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 
