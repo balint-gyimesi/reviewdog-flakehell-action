@@ -1,6 +1,9 @@
 # Description
 
-This repo contains a GitHub action to run [flakehell](https://github.com/flakehell/flakehell).
+This repo contains a GitHub action to run [flakehell](https://github.com/flakehell/flakehell),
+using [reviewdog](https://github.com/reviewdog/reviewdog) to annotate code changes on GitHub.
+
+This action was created from `reviewdog`'s awesome [action template](https://github.com/reviewdog/action-template).
 
 ## Usage
 

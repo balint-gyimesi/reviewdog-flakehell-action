@@ -6,7 +6,7 @@ on:
   pull_request:
 jobs:
   test-PythonFlakehell:
-    name: runner / flakehell
+    name: runner / flakehell (github-pr-review)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
 
   test-pr-check:
     if: github.event_name == 'pull_request'
-    name: runner / <linter-name> (github-pr-check)
+    name: runner / flakehell (github-pr-check)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -35,7 +35,7 @@ jobs:
 
   test-pr-review:
     if: github.event_name == 'pull_request'
-    name: runner / <linter-name> (github-pr-review)
+    name: runner / flakehell (github-pr-review with locale and error)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
