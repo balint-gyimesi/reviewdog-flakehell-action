@@ -16,8 +16,8 @@ echo "Flakehell installed plugins:"
 python3.7 -m flakehell plugins
 
 echo -e "\n============================="
-echo "Flakehell config file:"
-ls -la pyproject.toml
+echo "Flakehell config file (optional):"
+ls -la pyproject.toml || :
 cat pyproject.toml || :
 
 echo -e "\n============================="
