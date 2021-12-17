@@ -12,7 +12,7 @@ export TMPFILE=$(mktemp)
 echo "Running in: ${PWD}"
 echo -e "\n============================="
 echo "Flakehell installed plugins:"
-flakehell plugins
+python3.7 -m flakehell plugins
 
 echo -e "\n============================="
 echo "Flakehell config file:"
@@ -21,11 +21,11 @@ cat pyproject.toml || :
 
 echo -e "\n============================="
 echo "Sanity check, running flakehell without saving its ouput:"
-python3.7 flakehell lint || :
+python3.7 -m flakehell lint || :
 
 echo -e "\n============================="
 echo "Running flakehell, saving output to tmpfile: ${TMPFILE} (ignore non-zero exit)"
-python3.7 flakehell lint > "${TMPFILE}" || :
+python3.7 -m flakehell lint > "${TMPFILE}" || :
 
 echo -e "\n============================="
 ls -la ${TMPFILE}
