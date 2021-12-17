@@ -58,7 +58,7 @@ reviewdog -efm="%f:%l:%c: %m" \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
-      ${INPUT_REVIEWDOG_FLAGS} < ${TMPFILE}
+      "${INPUT_REVIEWDOG_FLAGS}" < "${TMPFILE}"
 
 echo -e "\n============================="
 echo "Done running reviewdog, exiting..."
