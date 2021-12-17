@@ -11,7 +11,7 @@ author: 'Balint Gyimesi'
 inputs:
   github_token:
     description: 'GITHUB_TOKEN'
-    default: '${{ secrets.github_token }}'
+    default: '${{ github.token }}'
     required: false
   workdir:
     description: 'Working directory relative to the root directory.'
