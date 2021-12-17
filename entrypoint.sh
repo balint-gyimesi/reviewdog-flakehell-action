@@ -21,7 +21,7 @@ ls -la pyproject.toml
 cat pyproject.toml || :
 
 echo -e "\n============================="
-echo "Sanity check, running flakehell without saving its ouput:"
+echo "Sanity check, running flakehell without saving its output:"
 python3.7 -m flakehell lint || :
 
 echo -e "\n============================="
@@ -58,7 +58,7 @@ reviewdog -efm="%f:%l:%c: %m" \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
-      "${INPUT_REVIEWDOG_FLAGS}"" < "${TMPFILE}"
+      "${INPUT_REVIEWDOG_FLAGS}" < "${TMPFILE}"
 
 echo -e "\n============================="
 echo "Done running reviewdog, exiting..."
