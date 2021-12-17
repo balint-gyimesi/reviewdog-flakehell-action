@@ -7,7 +7,8 @@ then
 fi
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
-export TMPFILE=$(mktemp)
+TMPFILE=$(mktemp)
+export TMPFILE
 
 echo "Running in: ${PWD}"
 echo -e "\n============================="
@@ -28,10 +29,10 @@ echo "Running flakehell, saving output to tmpfile: ${TMPFILE} (ignore non-zero e
 python3.7 -m flakehell lint > "${TMPFILE}" || :
 
 echo -e "\n============================="
-ls -la ${TMPFILE}
+ls -la "${TMPFILE}"
 echo -e "\n============================="
 echo "Head of ${TMPFILE}:"
-head ${TMPFILE}
+head "${TMPFILE}"
 
 echo -e "\n============================="
 echo "Running reviewdog with:"
@@ -41,7 +42,7 @@ echo 'reviewdog -efm="%f:%l:%c: %m" \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
-      ${INPUT_REVIEWDOG_FLAGS} < ${TMPFILE}'
+      "${INPUT_REVIEWDOG_FLAGS}" < "${TMPFILE}"'
 echo ""
 echo "Where vars are:"
 echo "  INPUT_REPORTER=${INPUT_REPORTER}"
@@ -57,7 +58,7 @@ reviewdog -efm="%f:%l:%c: %m" \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
-      ${INPUT_REVIEWDOG_FLAGS} < "${TMPFILE}"
+      "${INPUT_REVIEWDOG_FLAGS}"" < "${TMPFILE}"
 
 echo -e "\n============================="
 echo "Done running reviewdog, exiting..."
