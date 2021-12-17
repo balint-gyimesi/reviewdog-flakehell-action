@@ -1,5 +1,5 @@
 #!/bin/bash
-set -
+set -e
 
 if [ -n "${GITHUB_WORKSPACE}" ]
 then
