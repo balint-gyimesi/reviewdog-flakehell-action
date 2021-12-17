@@ -43,7 +43,7 @@ echo 'reviewdog -efm="%f:%l:%c: %m" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
       "${INPUT_REVIEWDOG_FLAGS}" < "${TMPFILE}"'
-echo ""
+echo
 echo "Where vars are:"
 echo "  INPUT_REPORTER=${INPUT_REPORTER}"
 echo "  INPUT_FILTER_MODE=${INPUT_FILTER_MODE}"
