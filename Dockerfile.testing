@@ -4,12 +4,24 @@ ENV REVIEWDOG_VERSION=v0.13.0
 
 RUN apt-get update -y
 
+# Get rid of existing python and pip installations.
+RUN apt-get purge python3.? python3-pip || :
+RUN apt-get clean
+
 # Install wget
 RUN apt-get install --no-install-recommends wget git -y
 
-# Install and upgrade pip
-RUN apt-get install python3-pip -y
-RUN python3 -m pip install --no-cache-dir --upgrade pip
+# Install python3.7 and pip
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.7 \
+    python3-pip
+RUN python3.7 -m pip install --no-cache-dir --upgrade pip
+RUN apt-get update && apt-get install -y \
+    python3-distutils \
+    python3-setuptools
 
 # Clean up apt-get
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -17,17 +29,16 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install reviewdog, flake8, pylint and flakehell
 # flake8 has a bug in versions>3.9.0 https://github.com/flakehell/flakehell/issues/10
 # and another in >4.0.0 https://github.com/flakehell/flakehell/issues/22
-RUN python3 -m pip install --no-cache-dir flake8==3.9.2 flakehell==0.9.0 pylint==2.12.2
+RUN python3.7 -m pip install --no-cache-dir flake8==3.9.2 flakehell==0.9.0 pylint==2.12.2
 
 # Install plugins for flakehell
-RUN python3 -m pip install --no-cache-dir \
+RUN python3.7 -m pip install --no-cache-dir \
     flake8-bugbear \
     flake8-comprehensions \
     flake8-return \
     flake8-simplify \
     flake8-spellcheck \
-    # Fails on python3.6.9 with SyntaxError: future feature annotations is not defined
-    # flake8-functions \
+    flake8-functions \
     wemake-python-styleguide \
     flake8-markdown \
     flake8-docstrings \

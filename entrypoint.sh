@@ -21,11 +21,11 @@ cat pyproject.toml || :
 
 echo -e "\n============================="
 echo "Sanity check, running flakehell without saving its ouput:"
-flakehell lint || :
+python3.7 flakehell lint || :
 
 echo -e "\n============================="
 echo "Running flakehell, saving output to tmpfile: ${TMPFILE} (ignore non-zero exit)"
-flakehell lint > "${TMPFILE}" || :
+python3.7 flakehell lint > "${TMPFILE}" || :
 
 echo -e "\n============================="
 ls -la ${TMPFILE}
