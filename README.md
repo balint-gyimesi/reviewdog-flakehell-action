@@ -5,6 +5,16 @@ using [reviewdog](https://github.com/reviewdog/reviewdog) to annotate code chang
 
 This action was created from `reviewdog`'s awesome [action template](https://github.com/reviewdog/action-template).
 
+## Current status
+
+For `push` events to the `master` branch:
+
+[![Test Flakehell with Reviewdog](https://github.com/sailingpalmtree/reviewdog-flakehell-action/actions/workflows/test.yml/badge.svg?branch=master&event=push)](https://github.com/sailingpalmtree/reviewdog-flakehell-action/actions/workflows/test.yml)
+[![Docker Image CI](https://github.com/sailingpalmtree/reviewdog-flakehell-action/actions/workflows/dockerimage.yml/badge.svg?branch=master&event=push)](https://github.com/sailingpalmtree/reviewdog-flakehell-action/actions/workflows/dockerimage.yml)
+[![Test Flakehell with Reviewdog](https://github.com/sailingpalmtree/reviewdog-flakehell-action/actions/workflows/test.yml/badge.svg?branch=master&event=push)](https://github.com/sailingpalmtree/reviewdog-flakehell-action/actions/workflows/test.yml)
+[![reviewdog](https://github.com/sailingpalmtree/reviewdog-flakehell-action/actions/workflows/reviewdog.yml/badge.svg?branch=master&event=push)](https://github.com/sailingpalmtree/reviewdog-flakehell-action/actions/workflows/reviewdog.yml)
+[![release](https://github.com/sailingpalmtree/reviewdog-flakehell-action/actions/workflows/release.yml/badge.svg?branch=master&event=push)](https://github.com/sailingpalmtree/reviewdog-flakehell-action/actions/workflows/release.yml)
+
 ## Usage
 
 ```yaml
