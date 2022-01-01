@@ -9,6 +9,8 @@ RUN apt-get purge python3.? python3-pip -y && apt-get clean || :
 
 # Install wget
 RUN apt-get install --no-install-recommends wget git -y
+# Clean up apt-get
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install python3.7 and pip
 RUN apt-get update && apt-get install -y --no-install-recommends \
