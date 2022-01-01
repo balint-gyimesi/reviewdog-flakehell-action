@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ENV REVIEWDOG_VERSION=v0.13.0
+ENV REVIEWDOG_VERSION=v0.13.1
 
 RUN apt-get update -y
 
