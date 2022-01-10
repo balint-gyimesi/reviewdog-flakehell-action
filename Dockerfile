@@ -3,7 +3,6 @@ FROM ubuntu:18.04
 ENV REVIEWDOG_VERSION=v0.13.1
 ENV PYTHON_VERSION=python3.8
 
-
 RUN apt-get update -y
 
 # Get rid of existing python and pip installations.
@@ -14,7 +13,7 @@ RUN apt-get install --no-install-recommends wget git -y
 # Clean up apt-get
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install specified Python version and pip3
+# Install specified Python version and pip3.
 RUN apt-get update && apt-get install -y --no-install-recommends \
         software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa -y

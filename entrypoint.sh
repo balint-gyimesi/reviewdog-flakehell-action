@@ -6,6 +6,8 @@ then
   cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit 1
 fi
 
+export PY_EXE="${INPUT_PYTHON_VERSION}"
+
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 TMPFILE=$(mktemp)
 export TMPFILE
@@ -13,7 +15,7 @@ export TMPFILE
 echo "Running in: ${PWD}"
 echo -e "\n============================="
 echo "Flakehell installed plugins:"
-python3.7 -m flakehell plugins
+${PY_EXE} -m flakehell plugins
 
 echo -e "\n============================="
 echo "Flakehell config file (optional):"
@@ -22,7 +24,7 @@ cat pyproject.toml || :
 
 echo -e "\n============================="
 echo "Running flakehell, teeing and saving output to tmpfile: ${TMPFILE} (ignore non-zero exit)"
-python3.7 -m flakehell lint | tee "${TMPFILE}" || :
+${PY_EXE} -m flakehell lint | tee "${TMPFILE}" || :
 
 echo -e "\n============================="
 ls -la "${TMPFILE}"

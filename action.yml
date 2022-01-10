@@ -17,6 +17,12 @@ inputs:
     description: 'Working directory relative to the root directory.'
     default: '.'
     required: false
+  python_version:
+    description: 'The Python version to use for flakehell, e.g. python3.8'
+    # Don't forget to update this in the Dockerfile too until this is fixed:
+    # https://github.community/t/feature-request-build-args-support-in-docker-container-actions/16846/15
+    default: 'python3.8'
+    required: false
 
   ### Flags for reviewdog
   level:
