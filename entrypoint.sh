@@ -3,7 +3,9 @@ set -e
 
 if [ -n "${GITHUB_WORKSPACE}" ]
 then
-  cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit 1
+    git config --global --add safe.directory "${GITHUB_WORKSPACE}" || exit 1
+    git config --global --add safe.directory "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit 1
+    cd "${GITHUB_WORKSPACE}/${INPUT_WORKDIR}" || exit 1
 fi
 
 export PY_EXE="${INPUT_PYTHON_VERSION}"
