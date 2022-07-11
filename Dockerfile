@@ -1,5 +1,6 @@
 FROM ubuntu:18.04
 
+# For https://github.com/reviewdog/reviewdog/issues/1158
 ENV REVIEWDOG_VERSION=v0.14.1
 ENV PYTHON_VERSION=python3.8
 
