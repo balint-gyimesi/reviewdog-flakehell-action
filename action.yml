@@ -1,6 +1,6 @@
 
 # GitHub Action to run flakeheaven through reviewdog.
-# flakeheaven (https://github.com/flakeheaven) integrates well with legacy code
+# flakeheaven (https://github.com/flakeheaven/flakeheaven) integrates well with legacy code
 # reviewdog (https://github.com/reviewdog) adds inline comments for PRs/commits
 #
 # This Action was created using reviewdog's Action Template
