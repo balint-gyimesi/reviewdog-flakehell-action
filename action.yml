@@ -1,12 +1,12 @@
 
-# GitHub Action to run flakehell through reviewdog.
-# flakehell (https://github.com/flakehell) integrates well with legacy code
+# GitHub Action to run flakeheaven through reviewdog.
+# flakeheaven (https://github.com/flakeheaven/flakeheaven) integrates well with legacy code
 # reviewdog (https://github.com/reviewdog) adds inline comments for PRs/commits
 #
 # This Action was created using reviewdog's Action Template
 # https://github.com/reviewdog/action-template
-name: 'Run flakehell with reviewdog'
-description: '🐶 Run flakehell with reviewdog on pull requests to improve code review experience.'
+name: 'Run flakeheaven with reviewdog'
+description: '🐶 Run flakeheaven with reviewdog on pull requests to improve code review experience.'
 author: 'Balint Gyimesi'
 inputs:
   github_token:
@@ -18,7 +18,7 @@ inputs:
     default: '.'
     required: false
   python_version:
-    description: 'The Python version to use for flakehell, e.g. python3.8'
+    description: 'The Python version to use for flakeheaven, e.g. python3.8'
     # Don't forget to update this in the Dockerfile too until this is fixed:
     # https://github.community/t/feature-request-build-args-support-in-docker-container-actions/16846/15
     default: 'python3.8'
@@ -50,8 +50,8 @@ inputs:
     default: ''
     required: false
 
-  ### Flags for flakehell
-  # None currently, flakehell is configured through pyproject.toml
+  ### Flags for flakeheaven
+  # None currently, flakeheaven is configured through pyproject.toml
 
 runs:
   using: 'docker'
