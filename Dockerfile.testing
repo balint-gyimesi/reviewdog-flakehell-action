@@ -31,13 +31,10 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install reviewdog, flake8, pylint and flakeheaven, then plugins for flakeheaven
 
-# TODO(balint): verify that these bugs are fixed in flakeheaven and we can stop pinning versions
-# flake8 has a bug in versions>3.9.0 https://github.com/flakeheaven/flakeheaven/issues/10
-# and another in >4.0.0 https://github.com/flakeheaven/flakeheaven/issues/22
 RUN ${PYTHON_VERSION} -m pip install --no-cache-dir \
     flake8 \
     flakeheaven \
-    pylint==2.12.2 \
+    pylint \
     flake8-bugbear \
     flake8-comprehensions \
     flake8-return \
