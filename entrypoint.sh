@@ -35,6 +35,7 @@ head "${TMPFILE}"
 
 echo -e "\n============================="
 echo "Running reviewdog with:"
+# shellcheck disable=SC2016
 echo 'reviewdog -efm="%f:%l:%c: %m" \
       -name="flakeheaven" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
